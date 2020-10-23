@@ -1,17 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/qmui_config_color_blue"
+        app:qmui_topbar_title_color="@color/white"
+        android:id="@+id/topbar"/>
+    <com.qmuiteam.qmui.widget.QMUIFloatLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:qmui_maxNumber="4"
+        android:paddingTop="20dp"
+        app:qmui_childHorizontalSpacing="5dp"
+        app:qmui_childVerticalSpacing="10dp"
+        android:gravity="center_horizontal">
     <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/poemGenerate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:padding="5dp"
+        android:text="AI辅助创作">
+    </com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton>
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/poemRead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="诗词阅读">
+    </com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton>
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/searchByPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="图片配诗词">
+    </com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton>
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/poemMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="诗词配乐">
+    </com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton>
+    </com.qmuiteam.qmui.widget.QMUIFloatLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
