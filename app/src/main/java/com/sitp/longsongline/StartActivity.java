@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.sitp.longsongline.activity.MainActivity;
+
 public class StartActivity extends AppCompatActivity {
     private Handler handler=new Handler();
     @Override
