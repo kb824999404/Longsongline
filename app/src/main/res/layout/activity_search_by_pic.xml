@@ -10,5 +10,83 @@
         android:background="@color/qmui_config_color_blue"
         app:qmui_topbar_title_color="@color/white"
         android:id="@+id/topbar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择图片"
+            android:id="@+id/choose_from_album"
+            android:padding="10dp"
+            android:layout_margin="20dp"/>
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity= "center"
+        android:scaleType="fitCenter" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上传"
+            android:id="@+id/upload"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            android:background="#eee"/>
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="匹配诗词"
+            android:id="@+id/searchPoem"
+            android:padding="10dp"
+            android:layout_margin="20dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="#eee">
+        <TextView
+            android:id="@+id/poemTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:layout_gravity= "center"
+            android:textAlignment="center"
+            android:textSize="24dp"
+            android:textColor="@color/qmui_config_color_blue"
+            android:layout_marginVertical="10dp"/>
+        <TextView
+            android:id="@+id/poemAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:textSize="16dp"
+            android:layout_gravity= "center"
+            android:textAlignment="center"
+            android:textColor="@color/qmui_config_color_blue"
+            android:layout_marginVertical="5dp"/>
+        <com.qmuiteam.qmui.widget.QMUIFontFitTextView
+            android:id="@+id/poemContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_gravity= "center"
+            android:textAlignment="center"
+            android:lineSpacingExtra="5dp"
+            android:textColor="@color/qmui_config_color_blue" />
+    </LinearLayout>
+
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
