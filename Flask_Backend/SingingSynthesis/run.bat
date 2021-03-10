@@ -1,0 +1,1 @@
+python main.py -l inputs\\杨花落尽子规啼.txt -m inputs\\杨花落尽子规啼.mid -v voices\\geping-o outputs\\杨花落尽子规啼_geping.wav -b inputs\\民谣1(舒缓).wav -bo outputs\\杨花落尽子规啼_geping_bgm.wav -f 0.15

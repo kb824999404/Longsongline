@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" href="https://ian824.xyz/img/favicon.ico">
+        <title id="title">ShowImages</title>
+    </head>
+    <body>
+        {% if img_path %}
+         <img src="../{{img_path}}">
+        {% else %}
+          <h1>No Image!</h1>
+        {% endif %}
+    </body>
+</html>
