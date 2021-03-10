@@ -17,6 +17,7 @@ import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.sitp.longsongline.R;
+import com.sitp.longsongline.api.ApiConfig;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -102,7 +103,7 @@ public class PoemGenerateActivity extends AppCompatActivity {
                 .addFormDataPart("hints", hints)
                 .build();
         Request request = new Request.Builder()
-                .url("http://120.25.145.41:6543/generatePoem")
+                .url(ApiConfig.BASE_URl+ApiConfig.GENERATE_POEM)
                 .post(body)
                 .build();
         OkHttpClient okHttpClient = new OkHttpClient();

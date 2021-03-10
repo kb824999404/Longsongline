@@ -64,6 +64,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.searchByPic:
                 startActivity(new Intent(MainActivity.this, SearchByPicActivity.class));
                 break;
+            case R.id.poemMusic:
+                startActivity(new Intent(MainActivity.this, PoemSingerActivity.class));
+                break;
             case R.id.toLogin:
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 break;

@@ -4,11 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eee">
-    <ImageView
-        android:layout_width="250dp"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity= "center"
-        android:src="@drawable/logo"
-        android:scaleType="fitCenter"
-        />
+        android:background="#95BAD8"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo_round" />
+
+<!--        <Space-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="1" />-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="50dp"
+            android:text="当古诗词遇上AI..."
+            android:textAlignment="center"
+            android:textColor="#eee"
+            android:textSize="20dp" />
+    </LinearLayout>
+
 </androidx.appcompat.widget.LinearLayoutCompat>

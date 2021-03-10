@@ -33,6 +33,7 @@ import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.sitp.longsongline.R;
+import com.sitp.longsongline.api.ApiConfig;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -192,7 +193,7 @@ public class SearchByPicActivity extends AppCompatActivity implements View.OnCli
                 .addFormDataPart("image","image.jpeg",RequestBody.create(MediaType.parse("image/jpeg"),f))
                 .build();
         Request request = new Request.Builder()
-                .url("http://120.25.145.41:6543/uploadImage")
+                .url(ApiConfig.BASE_URl+ApiConfig.UPLOAD_IMAGE)
                 .post(body)
                 .build();
         OkHttpClient okHttpClient = new OkHttpClient();
@@ -247,7 +248,7 @@ public class SearchByPicActivity extends AppCompatActivity implements View.OnCli
                 .addFormDataPart("image_path", uploadFileName)
                 .build();
         Request request = new Request.Builder()
-                .url("http://120.25.145.41:6543/searchPoemByImagePath")
+                .url(ApiConfig.BASE_URl+ApiConfig.SEARCH_POEM_BY_IMAGE_PATH)
                 .post(body)
                 .build();
         OkHttpClient okHttpClient = new OkHttpClient();
