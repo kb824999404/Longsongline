@@ -16,7 +16,7 @@ public class TabLayoutActivity extends AppCompatActivity {
 
     private CustomTabLayout tabLayout;
     private Fragment [] mFragmensts;
-    private static final int defaultFragment=0;
+    private static final int defaultFragment=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +33,9 @@ public class TabLayoutActivity extends AppCompatActivity {
         final Typeface tf= FontManager.getTypeFace(this,FontManager.FONTAWESOME);
 
         tabLayout = (CustomTabLayout)findViewById(R.id.tablayout);
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_icon_areachart));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_icon_linechart));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_icon_piechart));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_align_justify),false);
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_th_large),true);
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_icon_user),false);
 
         mFragmensts = MyFragmentManager.getFragments("Tab Layout");
         getSupportFragmentManager().beginTransaction().
@@ -65,6 +65,12 @@ public class TabLayoutActivity extends AppCompatActivity {
         switch (position){
             case 0:
                 fragment = mFragmensts[0];
+                break;
+            case 1:
+                fragment = mFragmensts[1];
+                break;
+            case 2:
+                fragment = mFragmensts[2];
                 break;
         }
         if(fragment!=null) {

@@ -2,4 +2,7 @@
     <string name="fa_icon_areachart">&#xf1fe;</string>
     <string name="fa_icon_piechart">&#xf200;</string>
     <string name="fa_icon_linechart">&#xf201;</string>
+    <string name="fa_icon_user">&#xf007;</string>
+    <string name="fa_th_large">&#xf009;</string>
+    <string name="fa_align_justify">&#xf039;</string>
 </resources>

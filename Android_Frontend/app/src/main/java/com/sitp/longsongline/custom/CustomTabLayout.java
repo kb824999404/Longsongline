@@ -33,8 +33,8 @@ public class CustomTabLayout extends TabLayout {
     }
 
     @Override
-    public void addTab(Tab tab) {
-        super.addTab(tab);
+    public void addTab(Tab tab,boolean setSelected) {
+        super.addTab(tab,setSelected);
 
         ViewGroup mainView = (ViewGroup) getChildAt(0);
         ViewGroup tabView = (ViewGroup) mainView.getChildAt(tab.getPosition());

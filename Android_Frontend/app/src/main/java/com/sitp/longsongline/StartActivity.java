@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.sitp.longsongline.activity.MainActivity;
+import com.sitp.longsongline.activity.TabLayoutActivity;
 
 public class StartActivity extends AppCompatActivity {
     private Handler handler=new Handler();
@@ -25,7 +25,7 @@ public class StartActivity extends AppCompatActivity {
     }
 //    进入首页
     private  void gotoMain(){
-        Intent intent = new Intent(StartActivity.this, MainActivity.class);
+        Intent intent = new Intent(StartActivity.this, TabLayoutActivity.class);
         startActivity(intent);
         finish();
     }

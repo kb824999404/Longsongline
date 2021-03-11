@@ -1,10 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
-        android:layout_width="wrap_content"
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Test"/>
-</LinearLayout>
+        android:background="@color/qmui_config_color_blue"
+        app:qmui_topbar_title_color="@color/white"
+        android:id="@+id/topbar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/poemGenerate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="20dp"
+            android:textSize="20dp"
+            android:text="AI辅助创作"/>
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/poemRead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="20dp"
+            android:textSize="20dp"
+            android:text="诗词阅读"/>
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/searchByPic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="20dp"
+            android:textSize="20dp"
+            android:text="图片配诗词"/>
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/poemMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="20dp"
+            android:textSize="20dp"
+            android:text="诗词配乐"/>
+    </LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

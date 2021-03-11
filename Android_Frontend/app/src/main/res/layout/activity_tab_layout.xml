@@ -17,6 +17,9 @@
         <com.sitp.longsongline.custom.CustomTabLayout
             android:id="@+id/tablayout"
             app:tabIndicator="@null"
+            app:tabTextColor="#777"
+            app:tabSelectedTextColor="@color/qmui_btn_blue_text"
+            app:tabTextAppearance="@style/TabLayoutTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 </LinearLayout>
