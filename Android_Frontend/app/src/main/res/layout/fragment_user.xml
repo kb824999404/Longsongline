@@ -10,6 +10,56 @@
         android:background="@color/qmui_config_color_blue"
         app:qmui_topbar_title_color="@color/white"
         android:id="@+id/topbar"/>
-
+    <LinearLayout
+        android:id="@+id/user_container_nologin"
+        android:orientation="vertical"
+        android:background="#eee"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:background="#fff"
+            android:padding="50dp"
+            android:textColor="#777"
+            android:textSize="32dp"
+            android:text="尚未登录！"/>
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector_white"
+            android:text="点击登录/注册"
+            android:layout_marginTop="10dp"
+            android:paddingVertical="15dp"
+            android:textAlignment="center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/user_container"
+        android:orientation="vertical"
+        android:background="#eee"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/username_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:background="#fff"
+            android:padding="50dp"
+            android:textColor="#777"
+            android:textSize="32dp"
+            android:text="Ian"/>
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector_white"
+            android:text="退出登录"
+            android:layout_marginTop="10dp"
+            android:paddingVertical="15dp"
+            android:textAlignment="center"/>
+    </LinearLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
