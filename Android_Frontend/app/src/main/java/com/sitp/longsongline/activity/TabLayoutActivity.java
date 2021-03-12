@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.google.android.material.tabs.TabLayout;
 import com.sitp.longsongline.R;
 import com.sitp.longsongline.custom.CustomTabLayout;
+import com.sitp.longsongline.data.UserInfo;
 import com.sitp.longsongline.fragment.MyFragmentManager;
 import com.sitp.longsongline.util.FontManager;
 
@@ -26,6 +27,10 @@ public class TabLayoutActivity extends AppCompatActivity {
 
         //隐藏默认标题栏
         getSupportActionBar().hide();
+
+        UserInfo.isLogin=true;
+        UserInfo.userName="Ian";
+        UserInfo.uid=1;
 
         Init();
     }

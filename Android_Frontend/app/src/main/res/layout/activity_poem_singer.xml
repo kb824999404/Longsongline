@@ -11,11 +11,21 @@
         android:background="@color/qmui_config_color_blue"
         app:qmui_topbar_title_color="@color/white"
         android:id="@+id/topbar"/>
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/myMusicButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity= "center"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="40dp"
+        android:layout_marginTop="40dp"
+        android:textSize="20dp"
+        android:text="我的音乐"/>
     <EditText
         android:id="@+id/poemTitle"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:hint="请输入标题"
         android:textAlignment="center"
         android:layout_gravity= "center"/>

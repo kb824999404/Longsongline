@@ -18,6 +18,7 @@ import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.sitp.longsongline.R;
 import com.sitp.longsongline.api.ApiConfig;
+import com.sitp.longsongline.data.UserInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -78,7 +79,7 @@ public class SongSynthesisActivity extends AppCompatActivity {
         if(intent.hasExtra("title")){
             title=intent.getStringExtra("title");
         }
-        Toast.makeText(this,poem,Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this,poem,Toast.LENGTH_SHORT).show();
 
         //获取按钮，绑定事件
         voiceButton = (QMUIRoundButton)findViewById(R.id.select_voice_button);
@@ -176,6 +177,7 @@ public class SongSynthesisActivity extends AppCompatActivity {
                 switch (msg.what){
                     case  SYNTHESIS_SONG:
                         Toast.makeText(getApplicationContext(),"合成乐曲成功！",Toast.LENGTH_SHORT).show();
+                        finish();
                         break;
                 }
                 return true;
@@ -195,6 +197,7 @@ public class SongSynthesisActivity extends AppCompatActivity {
         //Post请求生成诗词
         MediaType mediaType = MediaType.parse("text/plain");
         RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                .addFormDataPart("uid", UserInfo.uid+"")
                 .addFormDataPart("title", title)
                 .addFormDataPart("content", poem)
                 .addFormDataPart("voice", voiceIndex+"")

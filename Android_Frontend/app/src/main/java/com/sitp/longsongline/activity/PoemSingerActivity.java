@@ -82,5 +82,15 @@ public class PoemSingerActivity extends AppCompatActivity {
             }
         });
 
+        QMUIRoundButton myMusicButton=(QMUIRoundButton)findViewById(R.id.myMusicButton);
+        myMusicButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toMusicList = new Intent(getApplicationContext(),MusicListActivity.class);
+                startActivity(toMusicList);
+
+            }
+        });
+
     }
 }

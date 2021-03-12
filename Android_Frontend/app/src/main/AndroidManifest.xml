@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Longsongline">
-        <activity android:name=".activity.ReadTestActivity"></activity>
+        <activity android:name=".activity.MusicListActivity"></activity>
+        <activity android:name=".activity.ReadTestActivity" />
         <activity android:name=".activity.PoemReadActivity" />
         <activity android:name=".activity.TabLayoutActivity" />
         <activity android:name=".activity.SongSynthesisActivity" />
