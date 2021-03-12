@@ -8,16 +8,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
+import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.sitp.longsongline.R;
 import com.sitp.longsongline.api.ApiConfig;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -35,6 +39,12 @@ public class PoemReadActivity extends AppCompatActivity {
     private int poemIndex;
     private Handler handler;
     private static final int GET_POEM=0;
+
+    private String title="";
+    private String author="";
+    private String dynasty="";
+    private String[] keywords;
+    private String[] contents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +75,41 @@ public class PoemReadActivity extends AppCompatActivity {
             public boolean handleMessage(@NonNull Message msg) {
                 switch (msg.what){
                     case  GET_POEM:
+                        displayPoem();
                         break;
                 }
                 return true;
             }
         });
+
+        QMUIRoundButton readTestBtn=(QMUIRoundButton)findViewById(R.id.read_test_button);
+        readTestBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent readTestIntent=new Intent(getApplicationContext(),ReadTestActivity.class);
+                startActivity(readTestIntent);
+            }
+        });
+    }
+    private void displayPoem(){
+        TextView title_textview=(TextView)findViewById(R.id.poem_title);
+        title_textview.setText(title);
+        TextView author_textview=(TextView)findViewById(R.id.poem_author);
+        author_textview.setText(author);
+        TextView line1_textview=(TextView)findViewById(R.id.poem_line1);
+        TextView line2_textview=(TextView)findViewById(R.id.poem_line2);
+        line1_textview.setText(contents[0]+"，"+contents[1]+"。");
+        line2_textview.setText(contents[2]+"，"+contents[3]+"。");
+
+        TextView dynasty_textview=(TextView)findViewById(R.id.poem_dynasty);
+        dynasty_textview.setText(dynasty);
+        TextView keyword_textview=(TextView)findViewById(R.id.poem_keyword);
+        String keyword_str="";
+        for(String k : keywords){
+            keyword_str+=k;
+            keyword_str+=" ";
+        }
+        keyword_textview.setText(keyword_str);
     }
 
     private void requestPoemDetail(){
@@ -102,11 +142,15 @@ public class PoemReadActivity extends AppCompatActivity {
                         if(status.equals("true")){
                             Log.d(TAG,status);
                             JSONObject poem=jsonobject.getJSONObject("poem");
-                            String title=poem.getString("title");
-                            String author=poem.getString("author");
-                            String dynasty=poem.getString("dynasty");
-                            String[] keywords=poem.getString("keywords").split(" ");
-                            String[] contents=poem.getString("content").split("\\|");
+                            Log.d(TAG,poem.toString());
+                            title=poem.getString("title");
+                            author=poem.getString("author");
+                            dynasty=poem.getString("dynasty");
+                            keywords=poem.getString("keywords").split(" ");
+                            contents=poem.getString("content").split("\\|");
+                            Message msg=new Message();
+                            msg.what=GET_POEM;
+                            handler.sendMessage(msg);
                         }
                     }
                     catch (JSONException e){

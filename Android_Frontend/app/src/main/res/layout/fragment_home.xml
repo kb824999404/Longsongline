@@ -24,15 +24,6 @@
             android:textSize="20dp"
             android:text="AI辅助创作"/>
         <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
-            android:id="@+id/poemRead"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:paddingVertical="10dp"
-            android:paddingHorizontal="20dp"
-            android:textSize="20dp"
-            android:text="诗词阅读"/>
-        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
             android:id="@+id/searchByPic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -15,6 +15,7 @@ import com.sitp.longsongline.activity.PoemGenerateActivity;
 import com.sitp.longsongline.activity.PoemSingerActivity;
 import com.sitp.longsongline.activity.RegisterActivity;
 import com.sitp.longsongline.activity.SearchByPicActivity;
+import com.sitp.longsongline.data.UserInfo;
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener{
 
@@ -38,11 +39,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
 
         //获取Button
         QMUIRoundButton poemGenerate=(QMUIRoundButton)myView.findViewById(R.id.poemGenerate);
-        QMUIRoundButton poemRead=(QMUIRoundButton)myView.findViewById(R.id.poemRead);
         QMUIRoundButton searchByPic=(QMUIRoundButton)myView.findViewById(R.id.searchByPic);
         QMUIRoundButton poemMusic=(QMUIRoundButton)myView.findViewById(R.id.poemMusic);
         poemGenerate.setOnClickListener(this);
-        poemRead.setOnClickListener(this);
         searchByPic.setOnClickListener(this);
         poemMusic.setOnClickListener(this);
 
@@ -60,7 +59,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
                 startActivity(new Intent(getContext(), SearchByPicActivity.class));
                 break;
             case R.id.poemMusic:
-                startActivity(new Intent(getContext(), PoemSingerActivity.class));
+                if(UserInfo.isLogin){
+                    startActivity(new Intent(getContext(), PoemSingerActivity.class));
+                }
+                else {
+                    showDialog();
+                }
                 break;
             default:
                 showDialog();
@@ -71,7 +75,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
     private void showDialog(){
         new QMUIDialog.MessageDialogBuilder(getContext())
                 .setTitle("提示")
-                .setMessage("该功能尚在开发中，敬请期待！")
+                .setMessage("该功能需要登录，请先登录！")
                 .addAction("确定", new QMUIDialogAction.ActionListener() {
                     @Override
                     public void onClick(QMUIDialog dialog, int index) {

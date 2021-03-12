@@ -113,7 +113,7 @@ public class ReadFragment extends BaseFragment {
         MediaType mediaType = MediaType.parse("text/plain");
         RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
                 .addFormDataPart("start", "0")
-                .addFormDataPart("number", "20")
+                .addFormDataPart("number", "100")
                 .build();
         Request request = new Request.Builder()
                 .url(ApiConfig.BASE_URl+ApiConfig.GET_POEM_LIST)
@@ -145,7 +145,6 @@ public class ReadFragment extends BaseFragment {
                                 String author=poemJSON.getString("author");
                                 String []contents=poemJSON.getString("content").
                                         split("\\|");
-                                Log.d(TAG,contents[0]);
                                 Poem poem=new Poem(title,author,contents);
                                 poems.add(poem);
 

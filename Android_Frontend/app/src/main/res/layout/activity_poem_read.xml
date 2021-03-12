@@ -2,11 +2,89 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <com.qmuiteam.qmui.widget.QMUITopBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/qmui_config_color_blue"
         app:qmui_topbar_title_color="@color/white"
         android:id="@+id/topbar"/>
+    <TextView
+        android:id="@+id/poem_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="30dp"
+        android:textSize="32dp"
+        android:textColor="#333"/>
+    <TextView
+        android:id="@+id/poem_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="15dp"
+        android:textSize="16dp"
+        android:textColor="#333"/>
+    <TextView
+        android:id="@+id/poem_line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="15dp"
+        android:textColor="#333"
+        android:textSize="18dp"/>
+    <TextView
+        android:id="@+id/poem_line2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:textColor="#333"
+        android:textSize="18dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/qmui_btn_blue_text"
+        android:textSize="16dp"
+        android:text="朝代"/>
+    <TextView
+        android:id="@+id/poem_dynasty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="50dp"
+        android:textColor="#333"
+        android:textSize="18dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/qmui_btn_blue_text"
+        android:textSize="16dp"
+        android:text="关键词"/>
+    <TextView
+        android:id="@+id/poem_keyword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="50dp"
+        android:textColor="#333"
+        android:textSize="18dp"/>
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/read_test_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:paddingHorizontal="50dp"
+        android:paddingVertical="10dp"
+        android:layout_gravity="center"
+        android:text="阅读测试"
+        android:textSize="20dp"/>
+
+
 </LinearLayout>

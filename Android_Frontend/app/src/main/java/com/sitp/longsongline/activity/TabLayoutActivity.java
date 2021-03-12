@@ -17,7 +17,7 @@ public class TabLayoutActivity extends AppCompatActivity {
 
     private CustomTabLayout tabLayout;
     private Fragment [] mFragmensts;
-    private static final int defaultFragment=1;
+    private static final int defaultFragment=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +34,9 @@ public class TabLayoutActivity extends AppCompatActivity {
         final Typeface tf= FontManager.getTypeFace(this,FontManager.FONTAWESOME);
 
         tabLayout = (CustomTabLayout)findViewById(R.id.tablayout);
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_align_justify),false);
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_th_large),true);
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_align_justify),true);
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_book),false);
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_th_large),false);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_icon_user),false);
 
         mFragmensts = MyFragmentManager.getFragments("Tab Layout");
@@ -62,23 +63,15 @@ public class TabLayoutActivity extends AppCompatActivity {
     }
 
     public void changeToHome(){
-        onTabItemSelected(1);
+        onTabItemSelected(2);
         Toast.makeText(this,"退出登录成功！",Toast.LENGTH_SHORT).show();
-        tabLayout.getTabAt(1).select();
+        tabLayout.getTabAt(2).select();
     }
 
     private void onTabItemSelected(int position){
         Fragment fragment = null;
-        switch (position){
-            case 0:
-                fragment = mFragmensts[0];
-                break;
-            case 1:
-                fragment = mFragmensts[1];
-                break;
-            case 2:
-                fragment = mFragmensts[2];
-                break;
+        if(position>=0&&position<mFragmensts.length){
+            fragment=mFragmensts[position];
         }
         if(fragment!=null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,fragment).commit();
