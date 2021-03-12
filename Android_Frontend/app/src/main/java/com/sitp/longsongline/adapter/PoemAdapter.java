@@ -32,8 +32,14 @@ public class PoemAdapter extends RecyclerView.Adapter<PoemAdapter.ViewHolder>{
             QMUIVerticalTextView author_textView = itemView.findViewById(R.id.author_textview);
             author_textView.setText(poem.author);
             LinearLayout content_layout=itemView.findViewById(R.id.content_layout);
-            for(int i=0;i<poem.contents.length;i++){
+            for(int i=0;i<poem.contents.length&&i<4;i++){
                 String line=poem.contents[i];
+//                if(i%2==0){
+//                    line+="，";
+//                }
+//                else {
+//                    line+="。";
+//                }
                 QMUIVerticalTextView line_textView = (QMUIVerticalTextView)content_layout.getChildAt(i);
                 line_textView.setText(line);
             }
