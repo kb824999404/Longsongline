@@ -20,7 +20,7 @@ public class StartActivity extends AppCompatActivity {
             public void run() {
                 gotoMain();
             }
-        }, 3000);
+        }, 100);
 
     }
 //    进入首页

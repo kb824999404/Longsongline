@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginVertical="50dp"
+    android:layout_marginHorizontal="20dp"
+    android:background="@color/white"
+    android:gravity="center_vertical">
+    <LinearLayout
+        android:id="@+id/content_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal">
+        <com.qmuiteam.qmui.widget.QMUIVerticalTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:textSize="22dp"
+            android:textColor="#777"
+            android:text="春眠不觉晓" />
+        <com.qmuiteam.qmui.widget.QMUIVerticalTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:textSize="22dp"
+            android:textColor="#777"
+            android:text="处处闻啼鸟" />
+        <com.qmuiteam.qmui.widget.QMUIVerticalTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:textSize="22dp"
+            android:textColor="#777"
+            android:text="夜来风雨声" />
+        <com.qmuiteam.qmui.widget.QMUIVerticalTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:textSize="22dp"
+            android:textColor="#777"
+            android:text="花落知多少" />
+    </LinearLayout>
+
+    <com.qmuiteam.qmui.widget.QMUIVerticalTextView
+        android:id="@+id/author_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="18dp"
+        android:layout_above="@id/title_textview"
+        android:textColor="#555"
+        android:text="李白" />
+    <TextView
+        android:id="@+id/title_textview"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:textColor="#555"
+        android:textSize="24dp"
+        android:text="Poem Test"/>
+</RelativeLayout>

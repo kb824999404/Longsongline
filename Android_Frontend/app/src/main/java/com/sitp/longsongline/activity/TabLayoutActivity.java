@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.sitp.longsongline.R;
@@ -60,6 +61,12 @@ public class TabLayoutActivity extends AppCompatActivity {
         });
     }
 
+    public void changeToHome(){
+        onTabItemSelected(1);
+        Toast.makeText(this,"退出登录成功！",Toast.LENGTH_SHORT).show();
+        tabLayout.getTabAt(1).select();
+    }
+
     private void onTabItemSelected(int position){
         Fragment fragment = null;
         switch (position){
@@ -76,5 +83,10 @@ public class TabLayoutActivity extends AppCompatActivity {
         if(fragment!=null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,fragment).commit();
         }
+    }
+    @Override
+    public void onResume(){
+//        onTabItemSelected(1);
+        super.onResume();
     }
 }

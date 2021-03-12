@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#eee"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:background="#fff"
+        android:padding="50dp"
+        android:textColor="#777"
+        android:textSize="32dp"
+        android:text="尚未登录！"/>
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_selector_white"
+        android:text="点击登录/注册"
+        android:layout_marginTop="10dp"
+        android:paddingVertical="15dp"
+        android:textAlignment="center"/>
+</LinearLayout>

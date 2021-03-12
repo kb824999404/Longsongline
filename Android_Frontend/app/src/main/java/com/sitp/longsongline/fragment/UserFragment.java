@@ -19,8 +19,8 @@ import com.sitp.longsongline.data.UserInfo;
 
 public class UserFragment extends BaseFragment  {
 
-    private LinearLayout container_nologin;
-    private LinearLayout container;
+    private UserInfoFragment userInfoFragment;
+    private UserInfoNoLoginFragment userInfoNoLoginFragment;
 
     @Override
     protected int InitLayout(){
@@ -33,50 +33,38 @@ public class UserFragment extends BaseFragment  {
         QMUITopBar topbar=(QMUITopBar)myView.findViewById(R.id.topbar);
         topbar.setTitle("个人中心");
 
-        container_nologin = (LinearLayout)myView.findViewById(R.id.user_container_nologin);
-        container = (LinearLayout)myView.findViewById(R.id.user_container);
+        userInfoFragment = new UserInfoFragment();
+        userInfoNoLoginFragment = new UserInfoNoLoginFragment();
 
-
-        Button loginButton = (Button)myView.findViewById(R.id.login_button);
-        loginButton.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    Intent intent = new Intent(getContext(), LoginActivity.class);
-                    startActivity(intent);
-                    Log.d("UserFragment","Login click!");
-                }
-        });
-
-        Button logoutButton = (Button)myView.findViewById(R.id.logout_button);
-        logoutButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                UserInfo.isLogin = false;
-                UserInfo.uid = 0;
-                isLogin();
-            }
-        });
-        UserInfo.isLogin=true;
         isLogin();
 
     }
-    private void isLogin(){
+    public void isLogin(){
         if(UserInfo.isLogin){
-            container_nologin.setVisibility(View.INVISIBLE);
-            container.setVisibility(View.VISIBLE);
-            TextView username_tv = (TextView)myView.findViewById(R.id.username_tv);
-            username_tv.setText(UserInfo.userName);
+            getActivity().getSupportFragmentManager().beginTransaction().
+                    replace(R.id.frame_container,userInfoFragment).commit();
+//            TextView username_tv = (TextView)myView.findViewById(R.id.username_tv);
+//            username_tv.setText(UserInfo.userName);
         }
         else{
-            container.setVisibility(View.INVISIBLE);
-            container_nologin.setVisibility(View.VISIBLE);
+            getActivity().getSupportFragmentManager().beginTransaction().
+                    replace(R.id.frame_container,userInfoNoLoginFragment).commit();
         }
     }
+
+//    @Override
+//    public void onStart() {
+//        isLogin();
+//
+//        super.onStart();
+//    }
+
 
     @Override
     public void onResume() {
-        super.onResume();
         isLogin();
+        super.onResume();
+
     }
 
 }
