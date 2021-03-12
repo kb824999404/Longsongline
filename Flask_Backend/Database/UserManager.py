@@ -7,11 +7,19 @@ class UserManager:
     Index_Password = 3
     def __init__(self):
         self.databaseManager = DatabaseManager()
+    def _getUserByID(self,uid):
+        sql = "select * from User where id='{}'".format(uid)
+        results = self.databaseManager.select(sql)
+        if not results==None and len(results)>0:
+            user = results[0]
+            return user
+        else:
+            return None
     # 登录
     def login(self,userId,pwd):
         sql = "select * from User where userId='{}'".format(userId)
         results = self.databaseManager.select(sql)
-        if results and len(results)>0:
+        if not results==None and len(results)>0:
             user = results[0]
             if user[self.Index_Password]==pwd:
                 return {"status":'true',"id":user[self.Index_ID]}
@@ -23,7 +31,7 @@ class UserManager:
     def register(self,userId,username,pwd):
         sql = "select * from User where userId='{}'".format(userId)
         results = self.databaseManager.select(sql)
-        if results and len(results)>0:
+        if not results==None and len(results)>0:
             return {"status":'false',"message":"账号已存在！"}
         else:
             sql = "select * from User"

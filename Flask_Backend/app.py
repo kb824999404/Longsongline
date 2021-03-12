@@ -15,6 +15,7 @@ from PoetrySearch.searcher import Searcher
 from ImageMatch.ImageAnalyzor import ImageAnalyzor
 from ImageMatch.BaiduTranslator import BaiduTranslator
 from Database.UserManager import UserManager
+from Database.MusicManager import MusicManager
 
 from SingingSynthesis.PoetrySinger import PoetrySinger
 
@@ -109,13 +110,16 @@ def songSynthesis():
     if request.form['title'] and request.form['content'] and request.form['voice'] \
         and request.form['midi'] and request.form['bgm'] and request.form['uid']:
         uid = request.form['uid']
-        title = request.form['title']
-        content = request.form['content']
-        voice = int(request.form['voice'])
-        midi = int(request.form['midi'])
-        bgm = int(request.form['bgm'])
-        executor.submit(thread_songSynthesis,title,content,voice,midi,bgm,uid)
-        response={'status':'true'}
+        if not userManager._getUserByID(uid)==None:
+            title = request.form['title']
+            content = request.form['content']
+            voice = int(request.form['voice'])
+            midi = int(request.form['midi'])
+            bgm = int(request.form['bgm'])
+            executor.submit(thread_songSynthesis,title,content,voice,midi,bgm,uid)
+            response={'status':'true'}
+        else:
+            response={'status':'false','message':'找不到该用户!'}
     return response
 
 # 古诗词配乐线程
@@ -123,6 +127,17 @@ def thread_songSynthesis(title,content,voice,midi,bgm,uid):
     print('Hello')
     fileName , fileName_blend = singer.songSynthesis(title,content,voice,midi,bgm)
     print(fileName,fileName_blend)
+    if musicManager.synthesisMusic(uid,fileName_blend):
+        print("Synthesis Done.")
+
+# 获取用户合成的音乐
+@app.route('/getAllMusic', methods=['POST'])
+def getAllMusic():
+    response={'status':'false'}
+    if request.form['uid']:
+        uid = request.form['uid']
+        response = musicManager.getAllMusic(uid)
+    return response
 
 # 根据服务器图片路径检索诗词
 @app.route('/searchPoemByImagePath', methods=['POST'])
@@ -205,6 +220,7 @@ if __name__ == '__main__':
     searcher = Searcher()
     analyzor = ImageAnalyzor()
     userManager = UserManager()
+    musicManager = MusicManager()
     translator = BaiduTranslator()
     singer = PoetrySinger()
     app.run(host=config.HOST,port=config.PORT)
