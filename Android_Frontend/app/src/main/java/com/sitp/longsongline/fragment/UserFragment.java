@@ -29,9 +29,6 @@ public class UserFragment extends BaseFragment  {
 
     @Override
     protected void InitView(){
-        //设置标题栏标题
-        QMUITopBar topbar=(QMUITopBar)myView.findViewById(R.id.topbar);
-        topbar.setTitle("个人中心");
 
         userInfoFragment = new UserInfoFragment();
         userInfoNoLoginFragment = new UserInfoNoLoginFragment();
@@ -43,8 +40,6 @@ public class UserFragment extends BaseFragment  {
         if(UserInfo.isLogin){
             getActivity().getSupportFragmentManager().beginTransaction().
                     replace(R.id.frame_container,userInfoFragment).commit();
-//            TextView username_tv = (TextView)myView.findViewById(R.id.username_tv);
-//            username_tv.setText(UserInfo.userName);
         }
         else{
             getActivity().getSupportFragmentManager().beginTransaction().
@@ -52,18 +47,12 @@ public class UserFragment extends BaseFragment  {
         }
     }
 
-//    @Override
-//    public void onStart() {
-//        isLogin();
-//
-//        super.onStart();
-//    }
 
 
     @Override
     public void onResume() {
-        isLogin();
         super.onResume();
+        isLogin();
 
     }
 

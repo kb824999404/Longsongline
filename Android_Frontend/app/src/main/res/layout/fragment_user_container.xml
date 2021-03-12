@@ -6,6 +6,12 @@
     android:background="#eee"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/qmui_config_color_blue"
+        app:qmui_topbar_title_color="@color/white"
+        android:id="@+id/topbar"/>
     <TextView
         android:id="@+id/username_tv"
         android:layout_width="match_parent"

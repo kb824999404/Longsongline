@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
+import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.sitp.longsongline.R;
 import com.sitp.longsongline.activity.LoginActivity;
 import com.sitp.longsongline.activity.TabLayoutActivity;
@@ -29,6 +30,9 @@ public class UserInfoFragment extends BaseFragment {
 
     @Override
     protected void InitView() {
+        QMUITopBar topbar=(QMUITopBar)myView.findViewById(R.id.topbar);
+        topbar.setTitle("个人中心");
+
         Button logoutButton = (Button)myView.findViewById(R.id.logout_button);
         logoutButton.setOnClickListener(new View.OnClickListener(){
             @Override

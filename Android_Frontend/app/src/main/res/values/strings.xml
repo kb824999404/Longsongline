@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Longsongline</string>
+    <string name="app_name">长歌行</string>
     <string name="login">登录</string>
     <string name="register">注册</string>
     <string name="account_hint">请输入用户名</string>

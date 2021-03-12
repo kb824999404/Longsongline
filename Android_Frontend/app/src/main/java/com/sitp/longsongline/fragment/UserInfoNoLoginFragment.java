@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.sitp.longsongline.R;
 import com.sitp.longsongline.activity.LoginActivity;
 import com.sitp.longsongline.data.UserInfo;
@@ -23,6 +24,9 @@ public class UserInfoNoLoginFragment extends BaseFragment {
 
     @Override
     protected void InitView() {
+        QMUITopBar topbar=(QMUITopBar)myView.findViewById(R.id.topbar);
+        topbar.setTitle("个人中心");
+
         Button loginButton = (Button)myView.findViewById(R.id.login_button);
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
