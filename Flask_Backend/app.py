@@ -14,7 +14,7 @@ from PoetrySearch.searcher import Searcher
 
 from ImageMatch.ImageAnalyzor import ImageAnalyzor
 from ImageMatch.BaiduTranslator import BaiduTranslator
-from tools.UserManager import UserManager
+from Database.UserManager import UserManager
 
 from SingingSynthesis.PoetrySinger import PoetrySinger
 
@@ -50,10 +50,11 @@ def login():
 @app.route('/register', methods=['POST'])
 def register():
     response={'status':'false','message':'请求数据错误！'}
-    if request.form['username'] and request.form['passwd']:
+    if request.form['userId'] and request.form['username'] and request.form['passwd']:
+        userId=request.form['userId']
         username=request.form['username']
         pwd=request.form['passwd']
-        response=userManager.register(username,pwd)
+        response=userManager.register(userId,username,pwd)
     return response
 
 # 根据关键词生成古诗词
@@ -106,18 +107,19 @@ def searchPoemByImageUrl():
 def songSynthesis():
     response={'status':'false'}
     if request.form['title'] and request.form['content'] and request.form['voice'] \
-        and request.form['midi'] and request.form['bgm']:
+        and request.form['midi'] and request.form['bgm'] and request.form['uid']:
+        uid = request.form['uid']
         title = request.form['title']
         content = request.form['content']
         voice = int(request.form['voice'])
         midi = int(request.form['midi'])
         bgm = int(request.form['bgm'])
-        executor.submit(thread_songSynthesis,title,content,voice,midi,bgm)
+        executor.submit(thread_songSynthesis,title,content,voice,midi,bgm,uid)
         response={'status':'true'}
     return response
 
 # 古诗词配乐线程
-def thread_songSynthesis(title,content,voice,midi,bgm):
+def thread_songSynthesis(title,content,voice,midi,bgm,uid):
     print('Hello')
     fileName , fileName_blend = singer.songSynthesis(title,content,voice,midi,bgm)
     print(fileName,fileName_blend)
@@ -165,12 +167,44 @@ def showImg(imgname):
     image_path = '/'.join(config.UPLOAD_FOLDER.split(os.path.sep)[-2:] + [imgname])
     return render_template('showImg.html', img_path=image_path)
 
+
+#获取一首诗
+@app.route('/getPoemDetail', methods=['POST'])
+def getPoemDetail():
+    response={'status':'false'}
+    if request.form['index'] :
+        poemIndex = request.form['index']
+        poem = searcher.getPoem(int(poemIndex))
+        response={'status':'true',"poem":poem}
+    return response
+
+#获取诗列表
+@app.route('/getPoemList', methods=['POST'])
+def getPoemList():
+    response={'status':'false'}
+    if request.form['start'] and request.form['number']:
+        start = int(request.form['start'])
+        number = int(request.form['number'])
+        poemList = searcher.getPoemList(start,number)
+        response={'status':'true','poemList':poemList}
+    return response
+
+#获取问题
+@app.route('/getQuestonList', methods=['POST'])
+def getQuestonList():
+    response={'status':'false'}
+    if request.form['index']:
+        index = int(request.form['index'])
+        questionList = searcher.getQuestion(index)
+        response={'status':'true','questionList':questionList}
+    return response
+
 if __name__ == '__main__':
     planner = Planner()
     generator = Generator()
     searcher = Searcher()
     analyzor = ImageAnalyzor()
-    userManager = UserManager( os.path.join( config.DATABASE_PATH , "user.db"))
+    userManager = UserManager()
     translator = BaiduTranslator()
     singer = PoetrySinger()
     app.run(host=config.HOST,port=config.PORT)

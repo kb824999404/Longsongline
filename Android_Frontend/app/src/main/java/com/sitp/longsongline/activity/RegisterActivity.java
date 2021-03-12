@@ -116,7 +116,8 @@ public class RegisterActivity extends BaseActivity {
 
         MediaType mediaType = MediaType.parse("text/plain");
         RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                .addFormDataPart("username", account)
+                .addFormDataPart("userId", account)
+                .addFormDataPart("username", name)
                 .addFormDataPart("passwd", pwd)
                 .build();
         Request request = new Request.Builder()

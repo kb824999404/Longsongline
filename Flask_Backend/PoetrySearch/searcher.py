@@ -1,6 +1,8 @@
 import json
+import re
 import jieba
 import jieba.analyse
+from PoetrySearch.question import Question
 from configs import config
 
 poemList=[];##诗歌列表
@@ -132,11 +134,26 @@ class Searcher:
     def __init__(self):
         initPoem()
         initSynonym()
+        self.question=Question()
 
     def solve(self,description):
         id=getSimilarPoemId(description)
         ##poemText.insert("insert",id);
         return poemList[id]
+    def getPoem(self,index):
+        poem = poemList[index]
+        if poem["dynasty"] in self.question.dynasty_map.keys():
+            poem["dynasty"]=self.question.dynasty_map[poem["dynasty"]]
+        return poem
+    
+    def getPoemList(self,start,num):
+        tmpList = poemList[start:start+num]
+        tmpList = [{"title":poem["title"],"author":poem["author"],"content":poem["content"]}
+          for poem in tmpList ]
+        return tmpList
+    def getQuestion(self,index):
+        return self.question.getQuestions(poemList[index])
+        
     
     
 if __name__=='__main__':
