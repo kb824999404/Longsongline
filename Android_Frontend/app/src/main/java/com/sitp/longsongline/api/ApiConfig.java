@@ -2,6 +2,9 @@ package com.sitp.longsongline.api;
 
 public class ApiConfig {
     public static final String BASE_URl = "http://120.25.145.41:8889";
+    //静态文件
+    public static final String STATIC_SONGS = "/static/PoetrySongs";
+    //后端接口
     public static final String LOGIN = "/login";
     public static final String REGISTER = "/register";
     public static final String GENERATE_POEM = "/generatePoem";

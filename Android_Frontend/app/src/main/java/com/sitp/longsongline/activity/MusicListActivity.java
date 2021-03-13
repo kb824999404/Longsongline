@@ -27,7 +27,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -92,11 +96,27 @@ public class MusicListActivity extends AppCompatActivity {
         musicAdapter.setOnItemClickListener(new MusicAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
-//                Intent intent=new Intent(getApplicationContext(), PoemReadActivity.class);
-//                intent.putExtra("Index",position);
-//                startActivity(intent);
+                Intent intent=new Intent(getApplicationContext(), MusicActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("music",musicList.get(position));
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
+    }
+
+    private String formatTime(String time){
+        String time_format="";
+        SimpleDateFormat sdf=new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss 'GMT'", Locale.US);
+        try{
+            Date date = sdf.parse(time);
+            sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            time_format = sdf.format(date);
+        }
+        catch (ParseException e){
+            e.printStackTrace();
+        }
+        return time_format;
     }
 
     private void requestMusicList(){
@@ -135,9 +155,12 @@ public class MusicListActivity extends AppCompatActivity {
                             JSONArray musics=jsonobject.getJSONArray("musics");
                             musicList = new ArrayList<Music>();
                             Log.d(TAG,musics.length()+"");
+
                             for(int i=0;i<musics.length();i++){
                                 JSONArray music = musics.getJSONArray(i);
-                                musicList.add(new Music(music.getString(2),music.getString(4)));
+                                String time=formatTime(music.getString(4));
+                                musicList.add(new Music(music.getInt(0),music.getString(2),
+                                        music.getString(3),time,music.getString(5)));
                             }
                             Message msg=new Message();
                             msg.what = GET_MUSICS;

@@ -1,5 +1,6 @@
 package com.sitp.longsongline.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,11 @@ import com.sitp.longsongline.R;
 import com.sitp.longsongline.entity.Music;
 import com.sitp.longsongline.entity.Poem;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder>{
 
@@ -28,9 +33,9 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder>{
         }
         public void SetMusic(Music music){
             TextView title_textView = itemView.findViewById(R.id.music_name);
-            title_textView.setText(music.title);
+            title_textView.setText(music.getTitle());
             TextView time_textView = itemView.findViewById(R.id.music_time);
-            time_textView.setText(music.time);
+            time_textView.setText(music.getTime());
             itemLayout = (LinearLayout)itemView.findViewById(R.id.item_layout);
         }
     }
