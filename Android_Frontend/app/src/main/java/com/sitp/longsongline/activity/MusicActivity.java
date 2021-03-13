@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
@@ -62,19 +63,12 @@ public class MusicActivity extends AppCompatActivity implements View.OnClickList
         title.setText(music.getTitle());
 
         String content = music.getContent();
-        if(content.length()<20){
-            int n_pad = 20-content.length();
-            for(int i=0;i<n_pad;i++){
-                content+=" ";
-            }
+        String[] lines = content.split("\\|");
+        LinearLayout musicLines = (LinearLayout)findViewById(R.id.music_lines);
+        for(int i=0;i<lines.length&&i<musicLines.getChildCount();i++){
+            TextView line=(TextView)musicLines.getChildAt(i);
+            line.setText(lines[i]);
         }
-        System.out.println(content.length());
-        String line1 = content.substring(0,5) + "，"+content.substring(5,10) + "。";
-        String line2 = content.substring(10,15) + "，"+content.substring(15,20) + "。";
-        TextView line1_tv = (TextView)findViewById(R.id.music_line1);
-        TextView line2_tv = (TextView)findViewById(R.id.music_line2);
-        line1_tv.setText(line1);
-        line2_tv.setText(line2);
 
         InitMusic();
     }

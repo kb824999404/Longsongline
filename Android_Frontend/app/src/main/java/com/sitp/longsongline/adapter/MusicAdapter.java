@@ -36,6 +36,13 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder>{
             title_textView.setText(music.getTitle());
             TextView time_textView = itemView.findViewById(R.id.music_time);
             time_textView.setText(music.getTime());
+            TextView status_textView = itemView.findViewById(R.id.music_status);
+            if(music.getStatus()==0){
+                status_textView.setText("合成中");
+            }
+            else {
+                status_textView.setText("合成完成");
+            }
             itemLayout = (LinearLayout)itemView.findViewById(R.id.item_layout);
         }
     }

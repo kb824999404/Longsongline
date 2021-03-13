@@ -62,11 +62,11 @@ public class PoemSingerActivity extends AppCompatActivity {
                 Boolean error=false;
                 for(EditText editText : poemContents){
                     String text = editText.getText().toString();
-                    if(text.length()==5){
-                        poem +=text;
+                    if(text.length()<=7){
+                        poem +=text+"|";
                     }
                     else{
-                        Toast.makeText(getApplicationContext(),"请输入一首五言律诗！",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"每句诗不超过七个字！",Toast.LENGTH_SHORT).show();
                         Log.d(TAG,"字数错误！");
                         error = true;
                         break;

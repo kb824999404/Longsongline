@@ -1,6 +1,7 @@
 package com.sitp.longsongline.entity;
 
 import java.io.Serializable;
+import java.io.StringReader;
 
 public class Music implements Serializable {
     private int ID;
@@ -8,12 +9,14 @@ public class Music implements Serializable {
     private String path;
     private String time;
     private String content;
-    public Music(int _ID,String _title,String _path, String _time,String _content){
+    private int status;
+    public Music(int _ID,String _title,String _path, String _time,String _content,int _status){
         ID = _ID;
         title = _title;
         path = _path;
         time = _time;
         content = _content;
+        status = _status;
     }
     public final void setID(int value){
         ID = value;
@@ -41,4 +44,6 @@ public class Music implements Serializable {
     public final String getContent(){
         return content;
     }
+    public final void setStatus(int value){ status = value; }
+    public final int getStatus(){ return status; }
 }

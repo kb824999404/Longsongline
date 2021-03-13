@@ -96,11 +96,13 @@ public class MusicListActivity extends AppCompatActivity {
         musicAdapter.setOnItemClickListener(new MusicAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent intent=new Intent(getApplicationContext(), MusicActivity.class);
-                Bundle bundle=new Bundle();
-                bundle.putSerializable("music",musicList.get(position));
-                intent.putExtras(bundle);
-                startActivity(intent);
+                if(musicList.get(position).getStatus()==1){
+                    Intent intent=new Intent(getApplicationContext(), MusicActivity.class);
+                    Bundle bundle=new Bundle();
+                    bundle.putSerializable("music",musicList.get(position));
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -160,7 +162,8 @@ public class MusicListActivity extends AppCompatActivity {
                                 JSONArray music = musics.getJSONArray(i);
                                 String time=formatTime(music.getString(4));
                                 musicList.add(new Music(music.getInt(0),music.getString(2),
-                                        music.getString(3),time,music.getString(5)));
+                                        music.getString(3),time,
+                                        music.getString(5),music.getInt(6)));
                             }
                             Message msg=new Message();
                             msg.what = GET_MUSICS;
