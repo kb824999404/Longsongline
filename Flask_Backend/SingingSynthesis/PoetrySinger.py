@@ -1,5 +1,5 @@
 from SingingSynthesis.SingingSynthesizer import SingingSynthesizer
-from SingingSynthesis.utils import txt2pinyin,getSong,blendWithBGM
+from SingingSynthesis.utils import txt2pinyin,getSong,blendWithBGM,create_dir_not_exist
 import os
 import uuid
 from configs import config
@@ -48,6 +48,9 @@ class PoetrySinger:
         RESULT_PATH = os.path.join(self._resultRoot,fileName + '.wav')
 
         RESULT_BLEND_PATH = os.path.join(self._resultRoot,fileName_blend + '.wav')
+
+        create_dir_not_exist(RESULT_PATH)
+        create_dir_not_exist(RESULT_BLEND_PATH)
 
         self.synthesizer.voiceSynthesis(VOICE_ROOT,lyrics,song)
         self.synthesizer.saveVoice(RESULT_PATH)

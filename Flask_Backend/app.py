@@ -124,11 +124,15 @@ def songSynthesis():
 
 # 古诗词配乐线程
 def thread_songSynthesis(title,content,voice,midi,bgm,uid):
+    content_connect = ''.join(content.split('|'))
     print('Hello')
-    fileName , fileName_blend = singer.songSynthesis(title,content,voice,midi,bgm)
-    print(fileName,fileName_blend)
-    if musicManager.synthesisMusic(uid,fileName_blend):
-        print("Synthesis Done.")
+    result,id = musicManager.synthesisMusic(uid,title,content)
+    print(result,id)
+    if result==True and not id==-1:
+        fileName , fileName_blend = singer.songSynthesis(title,content_connect,voice,midi,bgm)
+        print(fileName,fileName_blend)
+        if musicManager.synthesisDone(id,fileName_blend):
+            print("Synthesis Done.")
 
 # 获取用户合成的音乐
 @app.route('/getAllMusic', methods=['POST'])

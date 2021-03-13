@@ -4,6 +4,7 @@ import numpy as np
 from scipy import interpolate 
 import pyworld as pw
 import sys,os
+import math
 
 
 class SingingSynthesizer:
@@ -14,13 +15,14 @@ class SingingSynthesizer:
     
     #歌声合成
     def voiceSynthesis(self,voiceRoot,lyrics,song):  
-        self.voiceRoot = voiceRoot
+        self.initVoiceData(voiceRoot)
         print("Lyrics Length:{}\tSong Length:{}".format(len(lyrics),len(song)))
         print("Begin to synthesis...") 
         result = None
         i_lyrics = i_note = 0
         while i_lyrics < len(lyrics) and i_note < len(song):
             word = lyrics[i_lyrics]
+            word = self.getUsefulSyllable(word)
             note = song[i_note]
             if note[0] == 0:    #休止符
                 syllable = None
@@ -41,6 +43,27 @@ class SingingSynthesizer:
     def saveVoice(self,result_path):     
         sf.write(result_path, self.synthesisResult, self.fs)
         print("Save Synthesis Result Successfully!")
+
+    #初始化人声数据，读取该人声的音节列表
+    def initVoiceData(self,voiceRoot):
+        self.voiceRoot = voiceRoot
+        syllableList = os.listdir(voiceRoot)
+        syllableList = [ syllable[:-4] for syllable in syllableList]
+        self.syllableList = syllableList
+
+    def getUsefulSyllable(self,syllable_name):
+        if syllable_name in self.syllableList:
+            return syllable_name
+        else:
+            dist_min = 100
+            syllable_min = 'i'
+            for s in self.syllableList:
+                dist_cur = word_dist(s,syllable_name)
+                if dist_cur < dist_min:
+                    dist_min = dist_cur
+                    syllable_min = s
+            return syllable_min
+
 
 
     #获取音节的音频数据
@@ -87,6 +110,15 @@ class SingingSynthesizer:
         data_new = self.changeFreq(data_new,freq)
 
         return data_new
+
+#计算单词间距离
+def word_dist(word_a, word_b):
+    dist =  math.fabs(len(word_a)-len(word_b))
+    len_min = min(len(word_a),len(word_b))
+    for i in range(len_min):
+        if not word_a[i] == word_b[i]:
+            dist += 1
+    return dist
 
 
  

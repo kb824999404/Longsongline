@@ -2,7 +2,15 @@ import music21
 import librosa
 import soundfile as sf
 import numpy as np
+import os
 from pypinyin import pinyin, Style, load_phrases_dict
+
+def create_dir_not_exist(path):
+    for length in range(0, len(path.split(os.path.sep)-1)):
+        check_path = os.path.sep.join(path.split(os.path.sep)[:(length+1)])
+        if not os.path.exists(check_path):
+            os.mkdir(check_path)
+            print(f'Created Dir: {check_path}')
 
 #读取歌词
 def readLyrics(lyrics_path):
