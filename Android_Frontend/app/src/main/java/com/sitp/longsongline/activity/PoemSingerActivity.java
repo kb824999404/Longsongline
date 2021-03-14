@@ -43,13 +43,22 @@ public class PoemSingerActivity extends AppCompatActivity {
         QMUITopBar topbar=(QMUITopBar)findViewById(R.id.topbar);
         topbar.setTitle("诗词配乐");
 
+        Intent intent = getIntent();
+        boolean hasContent=intent.hasExtra("contents");
+        String []contents={};
+        if(hasContent){
+            contents=intent.getStringArrayExtra("contents");
+        }
+
         poemTitle = (EditText)findViewById(R.id.poemTitle);
         LinearLayout poemContentLayout = (LinearLayout)findViewById(R.id.poemContent);
         poemContents = new ArrayList<EditText>();
         for(int i=0;i<poemContentLayout.getChildCount();i++){
             LinearLayout contentLayout = (LinearLayout)poemContentLayout.getChildAt(i);
             EditText poemContent = (EditText)contentLayout.getChildAt(0);
-            Log.d(TAG,poemContent.toString());
+            if(hasContent){
+                poemContent.setText(contents[i]);
+            }
             poemContents.add(poemContent);
         }
 

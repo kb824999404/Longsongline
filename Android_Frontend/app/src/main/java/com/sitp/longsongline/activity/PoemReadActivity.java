@@ -14,9 +14,12 @@ import android.widget.Toast;
 
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
+import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.sitp.longsongline.R;
 import com.sitp.longsongline.api.ApiConfig;
+import com.sitp.longsongline.data.UserInfo;
+import com.sitp.longsongline.entity.Poem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,12 +42,16 @@ public class PoemReadActivity extends AppCompatActivity {
     private int poemIndex;
     private Handler handler;
     private static final int GET_POEM=0;
+    private static final int NO_LOGIN=1;
 
     private String title="";
     private String author="";
     private String dynasty="";
     private String[] keywords;
     private String[] contents;
+
+    private long startTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +84,18 @@ public class PoemReadActivity extends AppCompatActivity {
                     case  GET_POEM:
                         displayPoem();
                         break;
+                    case NO_LOGIN:
+                        new QMUIDialog.MessageDialogBuilder(PoemReadActivity.this)
+                                .setTitle("提示")
+                                .setMessage("该功能需要登录，请先登录！")
+                                .addAction("确定", new QMUIDialogAction.ActionListener() {
+                                    @Override
+                                    public void onClick(QMUIDialog dialog, int index) {
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .show();
+                        break;
                 }
                 return true;
             }
@@ -86,11 +105,32 @@ public class PoemReadActivity extends AppCompatActivity {
         readTestBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                long readTime = System.currentTimeMillis() - startTime;
                 Intent readTestIntent=new Intent(getApplicationContext(),ReadTestActivity.class);
                 readTestIntent.putExtra("Index",poemIndex);
+                readTestIntent.putExtra("readTime",readTime);
                 startActivity(readTestIntent);
             }
         });
+
+        QMUIRoundButton musicBtn=(QMUIRoundButton)findViewById(R.id.music_button);
+        musicBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(UserInfo.isLogin){
+                    Intent musicIntent = new Intent(getApplicationContext(),PoemSingerActivity.class);
+                    musicIntent.putExtra("contents",contents);
+                    startActivity(musicIntent);
+                }
+                else {
+                    Message msg=new Message();
+                    msg.what = NO_LOGIN;
+                    handler.sendMessage(msg);
+                }
+            }
+        });
+
+        startTime =  System.currentTimeMillis();
     }
     private void displayPoem(){
         TextView title_textview=(TextView)findViewById(R.id.poem_title);

@@ -51,6 +51,7 @@ public class ReadTestActivity extends AppCompatActivity {
 
     private int answer1_check = 0;
     private int answer2_check = 0;
+    private long readTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +73,8 @@ public class ReadTestActivity extends AppCompatActivity {
 
         Intent intent=getIntent();
         poemIndex = intent.getIntExtra("Index",-1);
+        readTime = intent.getLongExtra("readTime",0);
+
 
         RadioGroup answers1=(RadioGroup)findViewById(R.id.answer1);
         answers1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -95,6 +98,8 @@ public class ReadTestActivity extends AppCompatActivity {
                 Intent submitIntent = new Intent(ReadTestActivity.this,ReportActivity.class);
                 submitIntent.putExtra("answer1",answer1_check);
                 submitIntent.putExtra("answer2",answer2_check);
+                submitIntent.putExtra("readTime",readTime);
+                Log.d("ReadTestActivity","readTime:"+readTime);
                 startActivity(submitIntent);
                 finish();
             }
