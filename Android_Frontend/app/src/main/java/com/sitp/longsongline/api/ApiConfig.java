@@ -15,6 +15,7 @@ public class ApiConfig {
     public static final String GET_POEM_LIST = "/getPoemList";
     public static final String GET_POEM_DETAIL = "/getPoemDetail";
     public static final String GET_ALL_MUSIC = "/getAllMusic";
+    public static final String GET_QUESTION_LIST = "/getQuestonList";
 
 
 }

@@ -87,6 +87,7 @@ public class PoemReadActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent readTestIntent=new Intent(getApplicationContext(),ReadTestActivity.class);
+                readTestIntent.putExtra("Index",poemIndex);
                 startActivity(readTestIntent);
             }
         });

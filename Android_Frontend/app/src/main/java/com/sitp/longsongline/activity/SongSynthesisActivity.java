@@ -45,8 +45,8 @@ public class SongSynthesisActivity extends AppCompatActivity {
     private QMUIRoundButton bgmButton;
 
     private static final String[] voiceChoice = {"男中音","女高音","男低音"};
-    private static final String[] midiChoice = {"旋律1","旋律2","旋律3"};
-    private static final String[] bgmChoice = {"钢琴","吉他","小提琴"};
+    private static final String[] midiChoice = {"旋律1","旋律2"};
+    private static final String[] bgmChoice = {"吉他","钢琴"};
 
     private int voiceIndex=0;
     private int midiIndex=0;
@@ -85,6 +85,9 @@ public class SongSynthesisActivity extends AppCompatActivity {
         voiceButton = (QMUIRoundButton)findViewById(R.id.select_voice_button);
         midiButton = (QMUIRoundButton)findViewById(R.id.select_midi_button);
         bgmButton = (QMUIRoundButton)findViewById(R.id.select_bgm_button);
+        voiceButton.setText(voiceChoice[voiceIndex]);
+        midiButton.setText(midiChoice[midiIndex]);
+        bgmButton.setText(bgmChoice[bgmIndex]);
         voiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

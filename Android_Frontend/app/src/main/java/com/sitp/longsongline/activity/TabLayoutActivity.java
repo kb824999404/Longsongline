@@ -28,9 +28,6 @@ public class TabLayoutActivity extends AppCompatActivity {
         //隐藏默认标题栏
         getSupportActionBar().hide();
 
-        UserInfo.isLogin=true;
-        UserInfo.userName="Ian";
-        UserInfo.uid=1;
 
         Init();
     }
@@ -40,7 +37,7 @@ public class TabLayoutActivity extends AppCompatActivity {
 
         tabLayout = (CustomTabLayout)findViewById(R.id.tablayout);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_align_justify),true);
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_book),false);
+//        tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_book),false);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_th_large),false);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.fa_icon_user),false);
 

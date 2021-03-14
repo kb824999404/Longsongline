@@ -85,6 +85,16 @@
         android:layout_gravity="center"
         android:text="阅读测试"
         android:textSize="20dp"/>
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/music_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="50dp"
+        android:paddingVertical="10dp"
+        android:layout_gravity="center"
+        android:text="合成乐曲"
+        android:textSize="20dp"/>
 
 
 </LinearLayout>
